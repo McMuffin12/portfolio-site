@@ -1,0 +1,266 @@
+/**
+ * IDE-style syntax highlighting for portfolio
+ * Custom classes for inline code styling
+ */
+
+/* IDE Color Scheme Variables */
+:root {
+  /* IDE syntax colors - based on VS Code Dark+ theme */
+  --ide-keyword: #569cd6;          /* Keywords like const, let, function */
+  --ide-string: #ce9178;           /* String literals */
+  --ide-number: #b5cea8;           /* Numbers */
+  --ide-comment: #6a9955;          /* Comments */
+  --ide-function: #dcdcaa;         /* Function names */
+  --ide-variable: #9cdcfe;         /* Variable names */
+  --ide-property: #9cdcfe;         /* Object properties */
+  --ide-class: #4ec9b0;            /* Class names */
+  --ide-operator: #d4d4d4;         /* Operators like =, +, -, etc */
+  --ide-bracket: #ffd700;          /* Brackets and braces */
+  --ide-type: #4ec9b0;             /* Type definitions */
+  --ide-constant: #4fc1ff;         /* Constants */
+  --ide-tag: #569cd6;              /* HTML tags */
+  --ide-attribute: #92c5ff;        /* HTML attributes */
+  --ide-error: #f44747;            /* Error highlighting */
+  --ide-warning: #ffcc02;          /* Warning highlighting */
+  --ide-success: #89d185;          /* Success highlighting */
+  --ide-info: #75beff;             /* Info highlighting */
+}
+
+/* Light theme adjustments */
+@media (prefers-color-scheme: light) {
+  :root {
+    --ide-keyword: #0000ff;
+    --ide-string: #a31515;
+    --ide-number: #098658;
+    --ide-comment: #008000;
+    --ide-function: #795e26;
+    --ide-variable: #001080;
+    --ide-property: #001080;
+    --ide-class: #267f99;
+    --ide-operator: #000000;
+    --ide-bracket: #000000;
+    --ide-type: #267f99;
+    --ide-constant: #0070c1;
+    --ide-tag: #800000;
+    --ide-attribute: #ff0000;
+    --ide-error: #cd3131;
+    --ide-warning: #bf8803;
+    --ide-success: #00aa00;
+    --ide-info: #0451a5;
+  }
+}
+
+/* IDE Syntax Highlighting Classes */
+.ide-keyword {
+  color: var(--ide-keyword);
+  font-weight: bold;
+}
+
+.ide-string {
+  color: var(--ide-string);
+}
+
+.ide-number {
+  color: var(--ide-number);
+}
+
+.ide-comment {
+  color: var(--ide-comment);
+  font-style: italic;
+}
+
+.ide-function {
+  color: var(--ide-function);
+}
+
+.ide-variable {
+  color: var(--ide-variable);
+}
+
+.ide-property {
+  color: var(--ide-property);
+}
+
+.ide-class {
+  color: var(--ide-class);
+  font-weight: bold;
+}
+
+.ide-operator {
+  color: var(--ide-operator);
+}
+
+.ide-bracket {
+  color: var(--ide-bracket);
+  font-weight: bold;
+}
+
+.ide-type {
+  color: var(--ide-type);
+}
+
+.ide-constant {
+  color: var(--ide-constant);
+}
+
+.ide-tag {
+  color: var(--ide-tag);
+}
+
+.ide-attribute {
+  color: var(--ide-attribute);
+}
+
+.ide-error {
+  color: var(--ide-error);
+  background-color: rgba(244, 71, 71, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.ide-warning {
+  color: var(--ide-warning);
+  background-color: rgba(255, 204, 2, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.ide-success {
+  color: var(--ide-success);
+  background-color: rgba(137, 209, 133, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.ide-info {
+  color: var(--ide-info);
+  background-color: rgba(117, 190, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Special highlighting for specific words */
+.highlight-word {
+  background-color: rgba(255, 255, 0, 0.2);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* Inline code styling */
+code {
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  font-size: 0.9em;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Code block improvements */
+pre {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 15px;
+  overflow-x: auto;
+  margin: 15px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+/* IDE-style line numbers */
+.line-numbers {
+  counter-reset: line-number;
+}
+
+.line-numbers .line {
+  counter-increment: line-number;
+  position: relative;
+  padding-left: 3em;
+}
+
+.line-numbers .line::before {
+  content: counter(line-number);
+  position: absolute;
+  left: 0;
+  color: var(--ide-comment);
+  font-size: 0.8em;
+  text-align: right;
+  width: 2em;
+  user-select: none;
+}
+
+/* Hover effects for interactive elements */
+.ide-function:hover,
+.ide-variable:hover,
+.ide-property:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(86, 156, 214, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: rgba(86, 156, 214, 0.3);
+  color: inherit;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  code {
+    font-size: 0.8em;
+  }
+  
+  pre code {
+    font-size: 0.75em;
+  }
+}
+
+/* Animation for highlighted words */
+@keyframes highlight-pulse {
+  0% { background-color: rgba(255, 255, 0, 0.2); }
+  50% { background-color: rgba(255, 255, 0, 0.4); }
+  100% { background-color: rgba(255, 255, 0, 0.2); }
+}
+
+.highlight-word.animate {
+  animation: highlight-pulse 2s ease-in-out infinite;
+}
+
+/* Tooltip for code explanations */
+.code-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.code-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1000;
+}
+
+.code-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
