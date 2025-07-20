@@ -1,303 +1,67 @@
-# Developer Portfolio Site
+![Zaggonaut, a retro-inspired theme for Astro.](./images/README.png)
 
-A Jekyll-based developer portfolio with an IDE-inspired design and syntax highlighting throughout. Built on the `jekyll-theme-console` base theme with extensive customizations.
+Zaggonaut is a retro-inspired theme for Astro, built using TypeScript, TailwindCSS, and of course, Astro.
+
+> [!NOTE]  
+> Introducing Zaggonaut 2.0!
+> This is a complete rewrite of the internal content layer, making use of Astro's new Content Collections feature, among other enhancements.
+
+If you are looking for the original Zaggonaut theme, you can find it [on the v1 branch](https://github.com/RATIU5/zaggonaut/tree/v1).
+
+## Getting Started
+
+[View the demo](https://zaggonaut.dev) or [view the source code](https://github.com/RATIU5/zaggonaut).
+
+Alternatively, you can create a new Astro project with Zaggonaut like this:
+
+```bash
+# pnpm
+pnpm create astro@latest --template RATIU5/zaggonaut
+```
+
+> [!IMPORTANT]  
+> Currently, `pnpm` is the only supported package manager due to `pnpm` throwing peer-dependency conflicts.
 
 ## Features
 
-- **IDE-Style Syntax Highlighting**: Custom SCSS with VS Code Dark+ color scheme
-- **Responsive Design**: Mobile-first approach with flexible layouts
-- **Portfolio Sections**: Projects, blog, resume, timeline, and contact
-- **Collection-Based Content**: Easy management of projects and timeline entries
-- **GitHub Pages Ready**: Configured for automatic deployment
-- **SEO Optimized**: Built-in meta tags and sitemap generation
-
-## Project Structure
-
-```
-portfolio-site/
-├── _config.yml              # Jekyll configuration
-├── Gemfile                  # Ruby dependencies
-├── assets/
-│   └── main-dark.scss       # Main stylesheet with imports
-├── _sass/
-│   ├── _ide-syntax.scss     # IDE-style syntax highlighting
-│   └── _portfolio-custom.scss # Custom portfolio styles
-├── _layouts/
-│   ├── home.html            # Homepage layout
-│   └── project.html         # Project detail layout
-├── _projects/               # Project collection
-│   ├── ai-code-review.md
-│   ├── ecommerce-platform.md
-│   └── task-management-app.md
-├── _posts/                  # Blog posts
-│   ├── 2023-12-15-scalable-react-architecture.md
-│   └── 2024-01-10-modern-javascript-es2024-features.md
-├── index.md                 # Homepage
-├── about.md                 # About page
-├── resume.md                # Resume page
-├── projects.md              # Projects overview
-├── blog.md                  # Blog overview
-├── timeline.md              # Timeline overview
-└── contact.md               # Contact page
-```
-
-## Setup
-
-### Prerequisites
-
-- Ruby 2.7+ and Bundler
-- Git
-- GitHub account (for GitHub Pages deployment)
-
-### Local Development
-
-1. **Clone the repository**:
-   ```bash
-   git clone <your-repo-url>
-   cd portfolio-site
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   bundle install
-   ```
-
-3. **Start the development server**:
-   ```bash
-   bundle exec jekyll serve
-   ```
-
-4. **Open in browser**:
-   Navigate to `http://localhost:4000`
-
-### GitHub Pages Deployment
-
-1. **Push to GitHub**:
-   ```bash
-   git add .
-   git commit -m "Initial portfolio setup"
-   git push origin main
-   ```
-
-2. **Enable GitHub Pages**:
-   - Go to your repository settings
-   - Scroll to "Pages" section
-   - Select "Deploy from a branch"
-   - Choose "main" branch and "/ (root)" folder
-   - Save
-
-3. **Custom Domain (Optional)**:
-   - Add a `CNAME` file with your domain
-   - Configure DNS records
-   - Update `_config.yml` with your domain
+- Content Collections
+- Dark & light mode
+- Customizable colors
+- 100 / 100 Lighthouse score
+- Fully accessible
+- Fully responsive
+- Type-safe
+- SEO-friendly
 
 ## Customization
 
-### Personal Information
+The entire theme is fully customizable. The theme is setup a specific way to make it easy to customize.
 
-1. **Update `_config.yml`**:
-   - Change `title`, `description`, and `author`
-   - Update social media links
-   - Modify contact information
+### Colors
 
-2. **Replace sample content**:
-   - Update `about.md` with your story
-   - Modify `resume.md` with your experience
-   - Update `contact.md` with your details
+You can customize the colors of the theme by editing the `src/styles/global.css` file.
+This file uses Tailwind CSS and CSS variables to customize the colors of the theme.
+Zaggonaut uses the following CSS variables:
 
-### Adding Content
+- `--color-zag-dark`: The dark color of the theme
+- `--color-zag-light`: The light color of the theme
+- `--color-zag-dark-muted`: The dark color of the theme with a slight opacity
+- `--color-zag-light-muted`: The light color of the theme with a slight opacity
+- `--color-zag-accent-light`: The light accent color of the theme
+- `--color-zag-accent-light-muted`: The light accent color of the theme with a slight opacity
+- `--color-zag-accent-dark`: The dark accent color of the theme
+- `--color-zag-accent-dark-muted`: The dark accent color of the theme with a slight opacity
 
-#### Projects
+### Content Customization
 
-Create new files in `_projects/` with this format:
+95% of the content you'll want to customize will be located inside the `content` directory. Let's break down the specific files/directories you may want to edit:
 
-```markdown
----
-title: "Project Name"
-description: "Brief description"
-date: 2023-01-01
-technologies: ["React", "Node.js", "PostgreSQL"]
-github_url: "https://github.com/username/project"
-live_url: "https://project-demo.com"
-featured: true
-timeline:
-  show: true
-  category: "project"
-  milestone: "Launch"
-  impact: "Specific impact or achievement"
----
+- `content/configuration.toml`: This file contains the site configuration, such as metadata, social links, and text content.
 
-Project details with IDE syntax highlighting...
-```
+- `content/blogs/`: This directory contains your blog posts. Each post is a Markdown file with metadata in the frontmatter at the top.
 
-#### Blog Posts
+- `content/projects/`: This directory contains your projects. Each project is a Markdown file also with metadata in the frontmatter.
 
-Create new files in `_posts/` with this format:
+## Ready To Try?
 
-```markdown
----
-title: "Post Title"
-date: 2023-01-01
-categories: [tutorial, javascript]
-tags: [react, hooks, frontend]
-timeline:
-  show: true
-  category: "article"
-  milestone: "Technical Article"
-  impact: "Engagement metrics or recognition"
----
-
-Post content with syntax highlighting...
-```
-
-### Timeline Integration
-
-The timeline page automatically pulls from your projects and blog posts. To include an item in the timeline, add the following to the front matter:
-
-```yaml
-timeline:
-  show: true                    # Set to true to include in timeline
-  category: "project"           # "project" or "article"
-  milestone: "Launch"           # Brief milestone description
-  impact: "Description"         # Impact or achievement (optional)
-```
-
-#### Timeline Categories
-
-- **Projects**: Automatically pulls from `_projects/` collection
-- **Articles**: Automatically pulls from `_posts/` collection
-- **Automatic Sorting**: Items are sorted by date (newest first)
-- **Impact Tracking**: Optional impact metrics for each milestone
-
-### Styling
-
-#### IDE Syntax Highlighting
-
-The portfolio uses custom IDE-style syntax highlighting. Use these classes in your content:
-
-- `.ide-keyword` - for keywords (blue)
-- `.ide-string` - for strings (green)
-- `.ide-comment` - for comments (gray)
-- `.ide-function` - for functions (yellow)
-- `.ide-variable` - for variables (light blue)
-- `.ide-operator` - for operators (white)
-- `.ide-bracket` - for brackets (white)
-- `.ide-property` - for properties (red)
-- `.ide-class` - for classes (cyan)
-
-Example:
-```html
-<span class="ide-keyword">const</span> <span class="ide-variable">myVar</span> <span class="ide-operator">=</span> <span class="ide-string">"Hello World"</span><span class="ide-operator">;</span>
-```
-
-#### Custom Styling
-
-Modify `_sass/_portfolio-custom.scss` to customize:
-- Colors and themes
-- Layout and spacing
-- Component styles
-- Responsive breakpoints
-
-#### IDE Color Scheme
-
-Update `_sass/_ide-syntax.scss` to change the color scheme:
-- Modify CSS variables in the `:root` selector
-- Based on VS Code Dark+ theme by default
-- Easy to adapt to other IDE themes
-
-### Configuration Options
-
-Key `_config.yml` settings:
-
-```yaml
-# Site settings
-title: "Your Name"
-description: "Your tagline"
-author: "Your Name"
-
-# Theme
-remote_theme: "b2a3e8/jekyll-theme-console"
-
-# Collections
-collections:
-  projects:
-    output: true
-    permalink: /:collection/:name/
-
-# Navigation
-header_pages:
-  - index.md
-  - about.md
-  - resume.md
-  - projects.md
-  - blog.md
-  - timeline.md
-  - contact.md
-```
-
-## Development Tips
-
-### Local Testing
-
-- Use `bundle exec jekyll serve --livereload` for auto-refresh
-- Check `_site/` folder for generated files
-- Use `bundle exec jekyll build` to build without serving
-
-### Content Tips
-
-- Use front matter for metadata
-- Include proper `date` fields for sorting
-- Use descriptive filenames
-- Add alt text for images
-- Include relevant tags and categories
-
-### Performance
-
-- Optimize images before adding
-- Use proper markdown syntax
-- Minimize custom CSS
-- Test on mobile devices
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Ruby version conflicts**:
-   - Use rbenv or RVM to manage Ruby versions
-   - Ensure Ruby 2.7+ is installed
-
-2. **Bundler issues**:
-   - Run `bundle update` to update gems
-   - Delete `Gemfile.lock` and run `bundle install`
-
-3. **GitHub Pages deployment**:
-   - Check repository settings
-   - Ensure `_config.yml` is properly formatted
-   - Review GitHub Pages build logs
-
-4. **Styling issues**:
-   - Check browser console for errors
-   - Verify SCSS syntax in custom files
-   - Clear browser cache
-
-### Getting Help
-
-- Check Jekyll documentation: https://jekyllrb.com/docs/
-- GitHub Pages documentation: https://docs.github.com/en/pages
-- Console theme documentation: https://github.com/b2a3e8/jekyll-theme-console
-
-## License
-
-This portfolio template is open source and available under the [MIT License](LICENSE).
-
-## Contributing
-
-Feel free to submit issues and pull requests to improve this portfolio template.
-
----
-
-**Happy coding!** 🚀
-
----
-
-*This portfolio showcases not just your projects, but your attention to detail and design sensibility. Make it uniquely yours!*
+Check out [the theme website](https://zaggonaut.dev) to give it a spin!
